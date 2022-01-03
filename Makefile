@@ -31,12 +31,14 @@ endef
 DONE		= @echo "$(shell tput bold)$(shell tput setaf 2)√$(shell tput sgr0)"
 
 SRCS		= $(addprefix srcs/, \
+			  	stack.c \
+				stackop.c \
 			  	main.c \
 				)
 
 OBJS		= $(SRCS:.c=.o)
 
-NAME		= fractol
+NAME		= push_swap
 
 RM			= rm -f
 
