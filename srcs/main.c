@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 16:42:10 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/04 17:15:57 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int	main(int ac, char **av)
 		ft_puterror();
 	else
 	{
-		/* here will be the grandiose algorithm*/
-		write(1, "todo\n", 5);
+		while (i < a->top)
+		{
+			#include<stdio.h>
+			printf("%li\n", a->items[i]);
+			i++;
+		}
 	}
 	free(a->items);
 	free(a);

@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:51 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 16:08:59 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/04 17:20:59 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	ft_loadinput(t_stack *stack, char **av)
 			}
 			free(split);
 		}
-		else
+		else if (**av != '\0')
 			ft_pushbot(stack, ft_atol(*av));
 		av++;
 	}
