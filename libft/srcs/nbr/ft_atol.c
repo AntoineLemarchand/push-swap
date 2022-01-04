@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 13:17:49 by alemarch         ###   ########.fr       */
+/*   Created: 2022/01/04 12:50:40 by alemarch          #+#    #+#             */
+/*   Updated: 2022/01/04 12:51:03 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
-
-void ft_puterror(void)
+int	ft_atol(const char *nptr)
 {
-	ft_putendl_fd("Error", 2);
-	exit(1);
-}
+	int		i;
+	long	result;
+	int		sign;
 
-int	main(int ac, char **av)
-{
-	t_stack *a;
-	t_stack *b;
-
-	a = ft_initstack();
-	b = ft_initstack();
-	if (ac < 2 || ft_loadstack(a, av + 1))
-		ft_puterror();
-	else
+	i = 0;
+	result = 0;
+	sign = 1;
+	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		while (*a->items)
-		{
-			ft_putnbr_fd(*a->items, 1);
-			ft_putendl_fd("", 1);
-			a->items++;
-		}
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
 	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		result = result * 10 + nptr[i++] - 48;
+	return (result * sign);
 }

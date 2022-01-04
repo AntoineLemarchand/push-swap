@@ -37,7 +37,8 @@ STR			= $(addprefix str/, \
 				)
 
 NBR			= $(addprefix nbr/, \
-			ft_atoi.c \
+				ft_atoi.c \
+				ft_atol.c \
 			  	ft_itoa.c \
 				)
 

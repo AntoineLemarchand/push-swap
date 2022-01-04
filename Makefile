@@ -31,6 +31,7 @@ endef
 DONE		= @echo "$(shell tput bold)$(shell tput setaf 2)√$(shell tput sgr0)"
 
 SRCS		= $(addprefix srcs/, \
+			  	parsing.c \
 			  	stack.c \
 				stackop.c \
 			  	main.c \
