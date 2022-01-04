@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:51 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 14:00:08 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/04 16:08:59 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ static int	ft_checkinput(char **av)
 
 static int	ft_loadinput(t_stack *stack, char **av)
 {
-	char **split;
+	char	**split;
+	int		i;
 
+	i = 0;
 	while (*av)
 	{
 		if (ft_containspace(*av))
@@ -63,11 +65,13 @@ static int	ft_loadinput(t_stack *stack, char **av)
 			split = ft_split(*av, ' ');
 			if (!split)
 				return (1);
-			while (*split)
+			while (split[i])
 			{
-				ft_pushbot(stack, ft_atol(*split));
-				split++;
+				ft_pushbot(stack, ft_atol(split[i]));
+				free(split[i]);
+				i++;
 			}
+			free(split);
 		}
 		else
 			ft_pushbot(stack, ft_atol(*av));
@@ -78,9 +82,22 @@ static int	ft_loadinput(t_stack *stack, char **av)
 
 int	ft_loadstack(t_stack *stack, char **av)
 {
+	int	i;
+
+	i = 0;
 	if (ft_checkinput(av))
 		return (1);
 	if (ft_loadinput(stack, av))
 		return (1);
+	while (i < stack->top)
+	{
+		if (stack->items[i] > INT_MAX || stack->items[i] < INT_MIN)
+		{
+			free(stack->items);
+			free(stack);
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }

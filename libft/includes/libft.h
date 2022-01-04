@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 23:23:47 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 12:52:51 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/04 16:06:15 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 // Nbr
 int		ft_atoi(const char *nptr);
-int		ft_atol(const char *nptr);
+long	ft_atol(const char *nptr);
 char	*ft_itoa(int n);
 // Put
 void	ft_putchar_fd(char c, int fd);

@@ -6,11 +6,11 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 12:50:40 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 12:51:03 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/04 16:06:33 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	int		i;
 	long	result;
