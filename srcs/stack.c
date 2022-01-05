@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:36:11 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 16:00:08 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/05 13:50:40 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_push(t_stack *stack, long topush)
 	i = 0;
 	ret = malloc((++stack->top) * sizeof(long));
 	if (!ret)
-		return (1);
+		return (ERR);
 	ret[i++] = topush;
 	while (i < stack->top)
 	{
@@ -51,7 +51,7 @@ int	ft_pushbot(t_stack *stack, long topush)
 	stack->top++;
 	ret = malloc(stack->top * sizeof(long));
 	if (!ret)
-		return (1);
+		return (ERR);
 	while (i < stack->top - 1)
 	{
 		ret[i] = stack->items[i];
@@ -63,20 +63,20 @@ int	ft_pushbot(t_stack *stack, long topush)
 	return (0);
 }
 
-int	ft_pop(t_stack *stack)
+long	ft_pop(t_stack *stack)
 {
 	long	ret;
 	int		i;
 	long	*newitems;
-	
-	ret = stack->items[0];
+
+	ret = *stack->items;
 	newitems = malloc((--stack->top) * sizeof(long));
 	if (!newitems)
 		return (1);
-	i = 1;
-	while (i <= stack->top)
+	i = 0;
+	while (i < stack->top)
 	{
-		newitems[i - 1] = stack->items[i];
+		newitems[i] = stack->items[i + 1];
 		i++;
 	}
 	free(stack->items);
@@ -84,7 +84,7 @@ int	ft_pop(t_stack *stack)
 	return (ret);
 }
 
-int	ft_popbot(t_stack *stack)
+long	ft_popbot(t_stack *stack)
 {
 	long	ret;
 	int		i;
@@ -93,7 +93,7 @@ int	ft_popbot(t_stack *stack)
 	ret = stack->items[stack->top - 1];
 	newitems = malloc((--stack->top) * sizeof(long));
 	if (!newitems)
-		return (1);
+		return (ERR);
 	i = 0;
 	while (i < stack->top)
 	{

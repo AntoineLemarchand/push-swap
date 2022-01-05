@@ -6,11 +6,17 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:06:40 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/03 12:19:56 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/05 12:23:37 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	ft_freestack(t_stack *stack)
+{
+	free(stack->items);
+	free(stack);
+}
 
 void	ft_swap(t_stack *stack)
 {
@@ -21,10 +27,21 @@ void	ft_swap(t_stack *stack)
 	stack->items[1] = tmp;
 }
 
-void	ft_rotate(t_stack *stack,int isreverse)
+int	ft_rotate(t_stack *stack,int isreverse)
 {
-	if (!isreverse)
-		ft_pushbot(stack, ft_pop(stack));
+	long	topush;
+
+	if (isreverse)
+	{
+		topush = ft_pop(stack);
+		if (topush == ERR || ft_push(stack, topush) == ERR)
+			return (ERR);
+	}
 	else
-		ft_push(stack, ft_popbot(stack));
+	{
+		topush = ft_pop(stack);
+		if (topush == ERR || ft_pushbot(stack, topush) == ERR)
+			return (ERR);
+	}
+	return (0);
 }
