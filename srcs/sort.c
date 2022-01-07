@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 09:52:14 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/07 12:23:55 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/07 12:47:22 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,32 @@ int	ft_getclosestindex(t_stack *stack, long val)
 	return (0);
 }
 
+int	ft_getchunk(t_stack *stack)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	while (i < stack->top)
+	{
+		j = 0;
+		while (j < stack->top)
+		{
+			if (stack->items[i] > stack->items[j])
+				count++;
+			j++;
+		}
+		if (count == stack->top / 4 + 1)
+			return (i);
+		count = 0;
+		i++;
+	}
+	return (0);
+}
+
 
 int	ft_loadb(t_stack *a, t_stack *b)
 {
@@ -79,9 +105,7 @@ int	ft_loadb(t_stack *a, t_stack *b)
 
 	while (a->top >= 2)
 	{
-		pivot = a->items[a->top / 2 - 1];
-		if (ft_getless(a, pivot) == 0)
-			pivot = a->items[a->top / 2];
+		pivot = a->items[ft_getchunk(a)];
 		while (a->top > a->top - ft_getless(a, pivot))
 		{
 			if (*a->items < pivot)
