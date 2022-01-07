@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:06:40 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/05 12:23:37 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/07 11:58:31 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	ft_swap(t_stack *stack)
 {
 	int	tmp;
 
-	tmp = stack->items[0];
-	stack->items[0] = stack->items[1];
-	stack->items[1] = tmp;
+	if (stack->top > 2)
+	{
+		tmp = stack->items[0];
+		stack->items[0] = stack->items[1];
+		stack->items[1] = tmp;
+	}
 }
 
 int	ft_rotate(t_stack *stack,int isreverse)
@@ -33,15 +36,15 @@ int	ft_rotate(t_stack *stack,int isreverse)
 
 	if (isreverse)
 	{
-		topush = ft_pop(stack);
-		if (topush == ERR || ft_push(stack, topush) == ERR)
-			return (ERR);
+		topush = ft_popbot(stack);
+		if (topush == ERR || ft_push(stack, topush))
+			return (1);
 	}
 	else
 	{
 		topush = ft_pop(stack);
-		if (topush == ERR || ft_pushbot(stack, topush) == ERR)
-			return (ERR);
+		if (topush == ERR || ft_pushbot(stack, topush))
+			return (1);
 	}
 	return (0);
 }

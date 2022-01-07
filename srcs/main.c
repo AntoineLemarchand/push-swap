@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/05 13:58:20 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/07 11:04:21 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@ void ft_puterror(void)
 {
 	ft_putendl_fd("Error", 2);
 	exit(1);
+}
+
+#include<stdio.h>
+void	pstack(t_stack *stack)
+{
+	printf("________________________________________________________________\n");
+	int i = 0;
+	while (i < stack->top)
+		printf("->%li\n", stack->items[i++]);
 }
 
 int	main(int ac, char **av)

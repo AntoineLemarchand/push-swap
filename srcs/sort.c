@@ -6,60 +6,134 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 09:52:14 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/05 13:58:00 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/07 12:23:55 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	ft_getmin(t_stack *stack)
+int	ft_getless(t_stack *a, long val)
 {
-	int		i;
-	int		minindex;
-	long	min;
+	int	count;
+	int	i;
 
 	i = 0;
-	min = stack->items[i++];
-	while (i < stack->top)
+	count = 0;
+	while (i < a->top)
 	{
-		if (stack->items[i] < min)
-		{
-			min = stack->items[i];
-			minindex = i;
-		}
+		if (a->items[i] < val)
+			count++;
 		i++;
 	}
-	return (minindex);
+	return (count);
+}
+
+long	ft_getmax(t_stack *stack)
+{
+	int		i;
+	long	max;
+
+	i = 0;
+	max = *stack->items;
+	while (i < stack->top)
+	{
+		if (stack->items[i] > max)
+			max = stack->items[i];
+		i++;
+	}
+	return (max);
+}
+
+int	ft_getmaxindex(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->top)
+	{
+		if (stack->items[i] == ft_getmax(stack))
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_getclosestindex(t_stack *stack, long val)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->top)
+	{
+		if (stack->items[i] < val)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+
+int	ft_loadb(t_stack *a, t_stack *b)
+{
+	long	pivot;
+
+	while (a->top >= 2)
+	{
+		pivot = a->items[a->top / 2 - 1];
+		if (ft_getless(a, pivot) == 0)
+			pivot = a->items[a->top / 2];
+		while (a->top > a->top - ft_getless(a, pivot))
+		{
+			if (*a->items < pivot)
+			{
+				if (ft_push(b, *a->items) || ft_pop(a) == ERR)
+					return (1);
+				ft_putendl_fd("pb", 1);
+			}
+			else
+			{
+				if (ft_getclosestindex(a, pivot) < a->top / 2 - 1)
+				{
+					if (ft_rotate(a, 0))
+						return (1);
+					ft_putendl_fd("ra", 1);
+				}
+				else
+				{
+					if (ft_rotate(a, 1))
+						return (1);
+					ft_putendl_fd("rra", 1);
+				}
+			}
+		}
+	}
+	return (0);
 }
 
 int	ft_sortstack(t_stack *a, t_stack *b)
 {
-	int		i;
-	int		minindex;
-	long	topush;
-
-	while (a->top > 0)
-	{
-		i = 0;
-		minindex = ft_getmin(a);
-		while (i < minindex)
-		{
-			if (ft_rotate(a, 0) == ERR)
-				return (ERR);
-			write(1, "ra\n", 3);
-			i++;
-		}
-		topush = ft_pop(a);
-		if (topush == ERR || ft_push(b, topush) == ERR)
-			return (ERR);
-		write(1, "pb\n", 3);
-	}
+	if (ft_loadb(a, b))
+		return (1);
 	while (b->top > 0)
 	{
-		topush = ft_pop(b);
-		if (topush == ERR || ft_push(a, topush) == ERR)
-			return (ERR);
-		write(1, "pa\n", 3);
+		while (*b->items != ft_getmax(b))
+		{
+			if (ft_getmaxindex(b) > b->top / 2 - 1)
+			{
+				if (ft_rotate(b, 1))
+					return (1);
+				ft_putendl_fd("rrb", 1);
+			}
+			else
+			{
+				if (ft_rotate(b, 0))
+					return (1);
+				ft_putendl_fd("rb", 1);
+			}
+		}
+		if (ft_push(a, *b->items) || ft_pop(b) == ERR)
+			return (1);
+		ft_putendl_fd("pa", 1);
 	}
 	return (0);
 }
