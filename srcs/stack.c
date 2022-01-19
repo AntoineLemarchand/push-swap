@@ -6,15 +6,17 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:36:11 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/07 12:00:27 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 20:49:50 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-t_stack	*ft_initstack()
+t_stack	*ft_initstack(void)
 {
-	t_stack	*ret = malloc(sizeof(t_stack));
+	t_stack	*ret;
+
+	ret = malloc(sizeof(t_stack));
 	if (!ret)
 		return (NULL);
 	ret->top = 0;
@@ -90,7 +92,7 @@ long	ft_popbot(t_stack *stack)
 	long	ret;
 	int		i;
 	long	*newitems;
-	
+
 	ret = stack->items[stack->top - 1];
 	newitems = malloc((--stack->top) * sizeof(long));
 	if (!newitems)

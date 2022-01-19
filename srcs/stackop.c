@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:06:40 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/07 11:58:31 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 20:46:38 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_swap(t_stack *stack)
 	}
 }
 
-int	ft_rotate(t_stack *stack,int isreverse)
+int	ft_rotate(t_stack *stack, int isreverse)
 {
 	long	topush;
 

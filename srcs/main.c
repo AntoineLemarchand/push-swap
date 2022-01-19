@@ -6,13 +6,13 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 10:39:19 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 20:47:22 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void ft_puterror(void)
+void	ft_puterror(void)
 {
 	ft_putendl_fd("Error", 2);
 	exit(1);
@@ -20,8 +20,9 @@ void ft_puterror(void)
 
 int	main(int ac, char **av)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
+
 	if (ac < 2)
 		return (0);
 	a = ft_initstack();

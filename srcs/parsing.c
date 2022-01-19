@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:51 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 17:20:59 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 20:48:15 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_ischarset(char c)
 	return (c == '-' || c == ' ');
 }
 
-static int ft_containspace(char *s)
+static int	ft_containspace(char *s)
 {
 	while (*s)
 	{
