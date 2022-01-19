@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 10:28:53 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 16:07:16 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:15:05 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ long	ft_getsortedpos(t_stack *b, long val)
 			j++;
 		while (j < b->top && b->items[j] > val)
 			j++;
-		if (j == b->top)
-			j = 0;
+		if (j != b->top)
+			return (b->items[j]);
+		j = 0;
 		while (j < b->top && b->items[j] > val)
 			j++;
 		if (j < b->top)
 			return (b->items[j]);
 		else
-			return (ERR);
+			return (ft_getmax(b));
 	}
 	else
 		return (ERR);
