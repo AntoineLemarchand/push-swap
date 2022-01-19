@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:28:28 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/14 17:23:44 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:30:22 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,16 @@ int		ft_rotate(t_stack *stack, int isreverse);
 int		ft_loadstack(t_stack *stack, char **av);
 // sort.c
 int		ft_sortstack(t_stack *a, t_stack *b);
-// chunk.c
-int		ft_pushchunk(t_stack *a, t_stack *b, int chunk, int chunknum);
-// cocktailparty.c
-int	ft_cocktailparty(t_stack *a, t_stack *b);
+// sortsmall.c
+int		ft_sort2(t_stack *a);
+int		ft_sort3(t_stack *a);
+int		ft_selectionsort(t_stack *a, t_stack *b);
+// sortbig.c
+int		ft_costsort(t_stack *a, t_stack *b);
+// utils.c
+long	ft_getmax(t_stack *stack);
+long	ft_getmin(t_stack *stack);
+int		ft_issorted(t_stack *a);
+int		ft_puttotop(t_stack *stack, long val, int isa);
+int		ft_getindex(t_stack *stack, long val);
 #endif

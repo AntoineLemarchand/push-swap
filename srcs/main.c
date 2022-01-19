@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/14 16:34:37 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 10:39:19 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 {
 	t_stack *a;
 	t_stack *b;
+	if (ac < 2)
+		return (0);
 	a = ft_initstack();
 	if (!a)
 		ft_puterror();
@@ -31,7 +33,7 @@ int	main(int ac, char **av)
 		ft_freestack(a);
 		ft_puterror();
 	}
-	if (ac < 2 || ft_loadstack(a, av + 1))
+	else if (ft_loadstack(a, av + 1))
 		ft_puterror();
 	else
 		ft_sortstack(a, b);

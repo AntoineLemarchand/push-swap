@@ -34,8 +34,9 @@ SRCS		= $(addprefix srcs/, \
 			  	parsing.c \
 			  	stack.c \
 				stackop.c \
-				chunk.c \
-				cocktailparty.c \
+				sortsmall.c \
+				sortbig.c \
+				utils.c \
 				sort.c \
 			  	main.c \
 				)
