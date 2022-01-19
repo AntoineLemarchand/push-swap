@@ -1,0 +1,5 @@
+sortedval = val - b->items[i]
+
+sortedval + b->items[i] = val
+
+b->items[i] = val - sortedval

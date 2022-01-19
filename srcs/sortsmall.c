@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 09:47:16 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 12:20:51 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:56:47 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_selectionsort(t_stack *a, t_stack *b)
 {
 	while (a->top > 2)
 	{
-		if (ft_puttotop(a, ft_getmin(a)))
+		if (ft_puttotop(a, ft_getmin(a), 1))
 			return (1);
 		if (ft_push(b, *a->items) || ft_pop(a) == ERR)
 			return (1);
