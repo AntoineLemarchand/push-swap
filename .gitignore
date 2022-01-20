@@ -1,4 +1,4 @@
 /checker_linux
-/srcs/*.o
+*.o
 /push_swap
 /push_swap_tester/
