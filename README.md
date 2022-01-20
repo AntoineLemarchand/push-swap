@@ -30,7 +30,6 @@ example
 
 <table>
 	<th>
-		<td></td>
 		<td colspan="2">Stack of 3</td>
 		<td colspan="2">Stack of 5</td>
 		<td colspan="2">Stack of 100</td>
