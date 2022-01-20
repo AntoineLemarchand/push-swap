@@ -29,28 +29,28 @@ example
 (on 1000 tests, by number of operations)
 
 ### stack of 3
-|Type|Performances (in number of operations)|
+|Type|nb of operations|
 |:---|---:|
 |min|0|
 |mean|1|
 |max|2|
 
 ### stack of 5
-|Type|Performances (in number of operations)|
+|Type|nb of operations|
 |:---|---:|
 |min|0|
 |mean|9|
 |max|12|
 
 ### stack of 100
-|Type|Performances (in number of operations)|
+|Type|nb of operations)|
 |:---|---:|
 |min|540|
 |mean|614|
 |max|695|
 
 ### stack of 500
-|Type|Performances (in number of operations)|
+|Type|nb of operations)|
 |:---|---:|
 |min|5183|
 |mean|5495|
