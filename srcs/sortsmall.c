@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 09:47:16 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 15:56:47 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:36:11 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,27 @@ int	ft_sort3(t_stack *a)
 	return (0);
 }
 
-int	ft_selectionsort(t_stack *a, t_stack *b)
+static int	ft_dumpb(t_stack *a, t_stack *b)
 {
-	while (a->top > 2)
+	while (*b->items != ft_getmax(b))
+	{
+		if (ft_push(a, *b->items) || ft_pop(b) == ERR)
+			return (1);
+		ft_putendl_fd("pa", 1);
+	}
+	if (ft_push(a, *b->items) || ft_pop(b) == ERR)
+		return (1);
+	ft_putendl_fd("pa", 1);
+	while (b->top)
+	{
+		/*last thing to do*/
+	}
+	return (0);
+}
+
+int	ft_selectionsort(t_stack *a, t_stack *b, int issmall)
+{
+	while (a->top > 2 * issmall)
 	{
 		if (ft_puttotop(a, ft_getmin(a), 1))
 			return (1);
@@ -66,11 +84,13 @@ int	ft_selectionsort(t_stack *a, t_stack *b)
 			ft_putendl_fd("sa", 1);
 		}
 	}
-	while (b->top)
+	if (ft_dumpb(a, b))
+		return (1);
+	while (*a->items != ft_getmin(a))
 	{
-		if (ft_push(a, *b->items) || ft_pop(b) == ERR)
+		if (ft_rotate(a, 1))
 			return (1);
-		ft_putendl_fd("pa", 1);
+		ft_putendl_fd("rra", 1);
 	}
 	return (0);
 }

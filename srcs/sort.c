@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 09:52:14 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 12:23:56 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:31:57 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ int	ft_sortstack(t_stack *a, t_stack *b)
 		}
 		else if (a->top <= 45)
 		{
-			if (ft_selectionsort(a, b))
+			if (ft_selectionsort(a, b, 1))
 				return (1);
 		}
 		else
 		{
 			if (ft_costsort(a, b) || ft_puttotop(b, ft_getmax(b), 0)
-				|| ft_selectionsort(a, b))
+				|| ft_selectionsort(a, b, 0))
 				return (1);
 		}
 	}

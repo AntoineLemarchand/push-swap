@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sortbig.c                                          :+:      :+:    :+:   */
+/*   costsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 10:28:53 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 12:25:03 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:35:17 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	ft_costsort(t_stack *a, t_stack *b)
 	if (ft_push(b, *a->items) || ft_pop(a) == ERR)
 		return (1);
 	ft_putendl_fd("pb", 1);
-	while (a->top)
+	while (a->top > 45)
 	{
 		topush = ft_getlowestcost(a, b);
 		toput = ft_getsortedpos(b, topush);

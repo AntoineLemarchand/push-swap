@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:28:28 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 12:25:50 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:32:10 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_sortstack(t_stack *a, t_stack *b);
 // sortsmall.c
 int		ft_sort2(t_stack *a);
 int		ft_sort3(t_stack *a);
-int		ft_selectionsort(t_stack *a, t_stack *b);
+int		ft_selectionsort(t_stack *a, t_stack *b, int ismall);
 // costsort.c
 int		ft_costsort(t_stack *a, t_stack *b);
 // utils.c
