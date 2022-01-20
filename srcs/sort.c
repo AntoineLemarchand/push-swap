@@ -6,11 +6,28 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 09:52:14 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 10:44:47 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 12:23:56 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+int	ft_issorted(t_stack *a)
+{
+	int		i;
+	long	prev;
+
+	prev = *a->items;
+	i = 1;
+	while (i < a->top)
+	{
+		if (a->items[i] <= prev)
+			return (0);
+		prev = a->items[i];
+		i++;
+	}
+	return (1);
+}
 
 void	ft_renamestack(t_stack *stack)
 {
@@ -59,7 +76,8 @@ int	ft_sortstack(t_stack *a, t_stack *b)
 		}
 		else
 		{
-			if (ft_costsort(a, b))
+			if (ft_costsort(a, b) || ft_puttotop(b, ft_getmax(b), 0)
+				|| ft_selectionsort(a, b))
 				return (1);
 		}
 	}

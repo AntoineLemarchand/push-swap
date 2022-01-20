@@ -6,13 +6,13 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 10:28:53 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 10:26:11 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 12:25:03 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-long	ft_getsortedpos(t_stack *b, long val)
+static long	ft_getsortedpos(t_stack *b, long val)
 {
 	int		j;
 	long	max;
@@ -36,7 +36,7 @@ long	ft_getsortedpos(t_stack *b, long val)
 		return (max);
 }
 
-int	ft_getcost(t_stack *a, t_stack *b, int index)
+static int	ft_getcost(t_stack *a, t_stack *b, int index)
 {
 	int	cost;
 	int	dista;
@@ -58,7 +58,7 @@ int	ft_getcost(t_stack *a, t_stack *b, int index)
 	return (cost);
 }
 
-long	ft_getlowestcost(t_stack *a, t_stack *b)
+static long	ft_getlowestcost(t_stack *a, t_stack *b)
 {
 	long	lowestcost;
 	int		i;
@@ -75,7 +75,7 @@ long	ft_getlowestcost(t_stack *a, t_stack *b)
 	return (lowestcost);
 }
 
-int	ft_movetoplace(t_stack *a, t_stack *b, long topush, long toput)
+static int	ft_movetoplace(t_stack *a, t_stack *b, long topush, long toput)
 {
 	int	topushindex;
 	int	toputindex;
@@ -86,49 +86,18 @@ int	ft_movetoplace(t_stack *a, t_stack *b, long topush, long toput)
 			return (1);
 		return (0);
 	}
-	else
-	{
-		topushindex = ft_getindex(a, topush);
-		toputindex = ft_getindex(b, toput);
-	}
+	topushindex = ft_getindex(a, topush);
+	toputindex = ft_getindex(b, toput);
 	if ((topushindex > a->top / 2 && toputindex <= b->top / 2)
 		|| (topushindex <= a->top / 2 && toputindex > b->top / 2)
 		|| !topushindex || !toputindex)
 	{
 		if (ft_puttotop(a, topush, 1) || ft_puttotop(b, toput, 0))
 			return (1);
+		return (0);
 	}
-	else
-	{
-		while (*a->items != topush)
-		{
-			if (*b->items != toput)
-			{
-				if (topushindex > a->top / 2)
-				{
-					if (ft_rotate(a, 1) || ft_rotate(b, 1))
-						return (1);
-					ft_putendl_fd("rrr", 1);
-				}
-				else
-				{
-					if (ft_rotate(a, 0) || ft_rotate(b, 0))
-						return (1);
-					ft_putendl_fd("rr", 1);
-				}
-			}
-			else
-			{
-				if (ft_puttotop(a, topush, 1))
-					return (1);
-			}
-		}
-		if (*b->items != toput)
-		{
-			if (ft_puttotop(b, toput, 0))
-				return (1);
-		}
-	}
+	if (ft_putbothtotop(a, b, topush, toput) || ft_puttotop(b, toput, 0))
+		return (1);
 	return (0);
 }
 
@@ -137,25 +106,25 @@ int	ft_costsort(t_stack *a, t_stack *b)
 	long	topush;
 	long	toput;
 
+	if (ft_push(b, *a->items) || ft_pop(a) == ERR)
+		return (1);
+	ft_putendl_fd("pb", 1);
 	while (a->top)
 	{
 		topush = ft_getlowestcost(a, b);
 		toput = ft_getsortedpos(b, topush);
-		/*
-		if (toput != ERR)
+		if (toput == ERR)
 		{
-			if (ft_puttotop(b, toput, 0))
+			if (ft_puttotop(a, topush, 1))
 				return (1);
+			return (0);
 		}
-		if (ft_puttotop(a, topush, 1))
-			return (1);
-			*/
-		ft_movetoplace(a, b, topush, toput);
+		else
+			if (ft_movetoplace(a, b, topush, toput))
+				return (1);
 		if (ft_push(b, *a->items) || ft_pop(a) == ERR)
 			return (1);
 		ft_putendl_fd("pb", 1);
 	}
-	ft_puttotop(b, ft_getmax(b), 0);
-	ft_selectionsort(a, b);
 	return (0);
 }

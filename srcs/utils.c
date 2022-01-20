@@ -6,28 +6,11 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 09:49:14 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 15:30:17 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 12:26:41 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-int	ft_issorted(t_stack *a)
-{
-	int		i;
-	long	prev;
-
-	prev = *a->items;
-	i = 1;
-	while (i < a->top)
-	{
-		if (a->items[i] <= prev)
-			return (0);
-		prev = a->items[i];
-		i++;
-	}
-	return (1);
-}
 
 int	ft_getindex(t_stack *stack, long val)
 {
@@ -92,6 +75,34 @@ int	ft_puttotop(t_stack *stack, long val, int isa)
 				ft_putendl_fd("ra", 1);
 			else
 				ft_putendl_fd("rb", 1);
+		}
+	}
+	return (0);
+}
+
+int	ft_putbothtotop(t_stack *a, t_stack *b, long topush, long toput)
+{
+	while (*a->items != topush)
+	{
+		if (*b->items != toput)
+		{
+			if (ft_getindex(a, topush) > a->top / 2)
+			{
+				if (ft_rotate(a, 1) || ft_rotate(b, 1))
+					return (1);
+				ft_putendl_fd("rrr", 1);
+			}
+			else
+			{
+				if (ft_rotate(a, 0) || ft_rotate(b, 0))
+					return (1);
+				ft_putendl_fd("rr", 1);
+			}
+		}
+		else
+		{
+			if (ft_puttotop(a, topush, 1))
+				return (1);
 		}
 	}
 	return (0);

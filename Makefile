@@ -35,7 +35,7 @@ SRCS		= $(addprefix srcs/, \
 			  	stack.c \
 				stackop.c \
 				sortsmall.c \
-				sortbig.c \
+				costsort.c \
 				utils.c \
 				sort.c \
 			  	main.c \
