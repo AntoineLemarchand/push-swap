@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 10:28:53 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 10:11:01 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:26:11 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,63 @@ long	ft_getlowestcost(t_stack *a, t_stack *b)
 	return (lowestcost);
 }
 
+int	ft_movetoplace(t_stack *a, t_stack *b, long topush, long toput)
+{
+	int	topushindex;
+	int	toputindex;
+
+	if (toput == ERR)
+	{
+		if (ft_puttotop(a, topush, 1))
+			return (1);
+		return (0);
+	}
+	else
+	{
+		topushindex = ft_getindex(a, topush);
+		toputindex = ft_getindex(b, toput);
+	}
+	if ((topushindex > a->top / 2 && toputindex <= b->top / 2)
+		|| (topushindex <= a->top / 2 && toputindex > b->top / 2)
+		|| !topushindex || !toputindex)
+	{
+		if (ft_puttotop(a, topush, 1) || ft_puttotop(b, toput, 0))
+			return (1);
+	}
+	else
+	{
+		while (*a->items != topush)
+		{
+			if (*b->items != toput)
+			{
+				if (topushindex > a->top / 2)
+				{
+					if (ft_rotate(a, 1) || ft_rotate(b, 1))
+						return (1);
+					ft_putendl_fd("rrr", 1);
+				}
+				else
+				{
+					if (ft_rotate(a, 0) || ft_rotate(b, 0))
+						return (1);
+					ft_putendl_fd("rr", 1);
+				}
+			}
+			else
+			{
+				if (ft_puttotop(a, topush, 1))
+					return (1);
+			}
+		}
+		if (*b->items != toput)
+		{
+			if (ft_puttotop(b, toput, 0))
+				return (1);
+		}
+	}
+	return (0);
+}
+
 int	ft_costsort(t_stack *a, t_stack *b)
 {
 	long	topush;
@@ -84,6 +141,7 @@ int	ft_costsort(t_stack *a, t_stack *b)
 	{
 		topush = ft_getlowestcost(a, b);
 		toput = ft_getsortedpos(b, topush);
+		/*
 		if (toput != ERR)
 		{
 			if (ft_puttotop(b, toput, 0))
@@ -91,6 +149,8 @@ int	ft_costsort(t_stack *a, t_stack *b)
 		}
 		if (ft_puttotop(a, topush, 1))
 			return (1);
+			*/
+		ft_movetoplace(a, b, topush, toput);
 		if (ft_push(b, *a->items) || ft_pop(a) == ERR)
 			return (1);
 		ft_putendl_fd("pb", 1);
