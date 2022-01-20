@@ -38,24 +38,24 @@ example
 	</th>
 	<tr>
 		<td>min</td>
-		<td>0</td>
-		<td>0</td>
-		<td>540</td>
-		<td>5183</td>
+		<td colspan="2">0</td>
+		<td colspan="2">0</td>
+		<td colspan="2">540</td>
+		<td colspan="2">5183</td>
 	</tr>
 	<tr>
 		<td>mean</td>
-		<td>1</td>
-		<td>9</td>
-		<td>614</td>
-		<td>5495</td>
+		<td colspan="2">1</td>
+		<td colspan="2">9</td>
+		<td colspan="2">614</td>
+		<td colspan="2">5495</td>
 	</tr>
 	<tr>
 		<td>max</td>
-		<td>2</td>
-		<td>12</td>
-		<td>695</td>
-		<td>5878</td>
+		<td colspan="2">2</td>
+		<td colspan="2">12</td>
+		<td colspan="2">695</td>
+		<td colspan="2">5878</td>
 	</tr>
 </table>
 
