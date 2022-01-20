@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 10:28:53 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 21:43:41 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:11:01 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,25 @@
 long	ft_getsortedpos(t_stack *b, long val)
 {
 	int		j;
+	long	max;
 
-	if (b->top)
-	{
-		j = 0;
-		while (b->items[j] != ft_getmax(b))
-			j++;
-		while (j < b->top && b->items[j] > val)
-			j++;
-		if (j != b->top)
-			return (b->items[j]);
-		j = 0;
-		while (j < b->top && b->items[j] > val)
-			j++;
-		if (j < b->top)
-			return (b->items[j]);
-		else
-			return (ft_getmax(b));
-	}
-	else
+	if (!b->top)
 		return (ERR);
+	max = ft_getmax(b);
+	j = 0;
+	while (b->items[j] != max)
+		j++;
+	while (j < b->top && b->items[j] > val)
+		j++;
+	if (j != b->top)
+		return (b->items[j]);
+	j = 0;
+	while (j < b->top && b->items[j] > val)
+		j++;
+	if (j < b->top)
+		return (b->items[j]);
+	else
+		return (max);
 }
 
 int	ft_getcost(t_stack *a, t_stack *b, int index)
@@ -42,16 +41,19 @@ int	ft_getcost(t_stack *a, t_stack *b, int index)
 	int	cost;
 	int	dista;
 	int	distb;
+	int	distbindex;
 
 	if (index > a->top / 2)
 		dista = a->top - index;
 	else
 		dista = index;
 	distb = ft_getsortedpos(b, a->items[index]);
-	if (distb != ERR && ft_getindex(b, distb) > b->top / 2)
-		distb = b->top - ft_getindex(b, distb);
+	if (distb != ERR)
+		distbindex = ft_getindex(b, distb);
+	if (distb != ERR && distbindex > b->top / 2)
+		distb = b->top - distbindex;
 	else if (distb != ERR)
-		distb = ft_getindex(b, distb);
+		distb = distbindex;
 	cost = dista + distb + 1;
 	return (cost);
 }
