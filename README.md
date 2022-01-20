@@ -28,6 +28,37 @@ example
 ## performances
 (on 1000 tests, by number of operations)
 
+<table>
+	<th>
+		<td></td>
+		<td colspan="2">Stack of 3</td>
+		<td colspan="2">Stack of 5</td>
+		<td colspan="2">Stack of 100</td>
+		<td colspan="2">Stack of 500</td>
+	</th>
+	<tr>
+		<td>min</td>
+		<td>0</td>
+		<td>0</td>
+		<td>540</td>
+		<td>5183</td>
+	</tr>
+	<tr>
+		<td>mean</td>
+		<td>1</td>
+		<td>9</td>
+		<td>614</td>
+		<td>5495</td>
+	</tr>
+	<tr>
+		<td>max</td>
+		<td>2</td>
+		<td>12</td>
+		<td>695</td>
+		<td>5878</td>
+	</tr>
+</table>
+
 ### stack of 3
 |Type|nb of operations|
 |:---|---:|
