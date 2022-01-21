@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 09:47:16 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 16:36:11 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/21 14:24:30 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_sort3(t_stack *a)
 
 static int	ft_dumpb(t_stack *a, t_stack *b)
 {
-	while (*b->items != ft_getmax(b))
+	while (b->top > 1 && b->items[0] > b->items[1])
 	{
 		if (ft_push(a, *b->items) || ft_pop(b) == ERR)
 			return (1);
@@ -61,13 +61,33 @@ static int	ft_dumpb(t_stack *a, t_stack *b)
 	ft_putendl_fd("pa", 1);
 	while (b->top)
 	{
-		/*last thing to do*/
+		if (a->items[a->top - 1] > *b->items 
+			&& a->items[a->top - 1] != ft_getmax(a))
+		{
+			if (ft_rotate(a, 1))
+				return (1);
+			ft_putendl_fd("rra", 1);
+		}
+		else
+		{
+			if (ft_push(a, *b->items) || ft_pop(b) == ERR)
+				return (1);
+			ft_putendl_fd("pa", 1);
+		}
 	}
 	return (0);
 }
 
 int	ft_selectionsort(t_stack *a, t_stack *b, int issmall)
 {
+	if (b->top && ft_getmax(a) > ft_getmax(b))
+	{
+		if (ft_puttotop(a, ft_getmax(a), 1)
+			|| ft_push(b, *a->items) 
+			|| ft_pop(a) == ERR)
+			return (1);
+		ft_putendl_fd("pb", 1);
+	}
 	while (a->top > 2 * issmall)
 	{
 		if (ft_puttotop(a, ft_getmin(a), 1))

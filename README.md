@@ -26,7 +26,7 @@ example
 ```
 
 ## performances
-(on 1000 tests, by number of operations)
+(on 10 000 tests, by number of operations)
 
 <table>
 	<th>
@@ -39,21 +39,21 @@ example
 		<td>min</td>
 		<td colspan="2">0</td>
 		<td colspan="2">0</td>
-		<td colspan="2">540</td>
+		<td colspan="2">489</td>
 		<td colspan="2">5183</td>
 	</tr>
 	<tr>
 		<td>mean</td>
 		<td colspan="2">1</td>
 		<td colspan="2">9</td>
-		<td colspan="2">614</td>
+		<td colspan="2">572</td>
 		<td colspan="2">5495</td>
 	</tr>
 	<tr>
 		<td>max</td>
 		<td colspan="2">2</td>
 		<td colspan="2">12</td>
-		<td colspan="2">695</td>
+		<td colspan="2">665</td>
 		<td colspan="2">5878</td>
 	</tr>
 </table>
