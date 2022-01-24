@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:06:40 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 20:46:38 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:01:46 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	ft_swap(t_stack *stack)
 {
 	int	tmp;
 
-	if (stack->top > 2)
+	if (stack->top >= 2)
 	{
-		tmp = stack->items[0];
-		stack->items[0] = stack->items[1];
+		tmp = *stack->items;
+		*stack->items = stack->items[1];
 		stack->items[1] = tmp;
 	}
 }

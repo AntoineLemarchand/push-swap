@@ -6,16 +6,11 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:51 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 20:48:15 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:08:46 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-static int	ft_ischarset(char c)
-{
-	return (c == '-' || c == ' ');
-}
 
 static int	ft_containspace(char *s)
 {
@@ -39,9 +34,10 @@ static int	ft_checkinput(char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if (!ft_ischarset(av[i][j]) && !ft_isdigit(av[i][j]))
+			if (av[i][j] != '-' && av[i][j] != ' ' && !ft_isdigit(av[i][j]))
 				return (1);
-			else if (av[i][j] == '-' && ft_ischarset(av[i][j + 1]))
+			else if (av[i][j] == '-' 
+				&& (av[i][j + 1] == ' ' || av[i][j + 1] == '-'))
 				return (1);
 			else if (ft_isdigit(av[i][j]) && av[i][j + 1] == '-')
 				return (1);
@@ -80,6 +76,26 @@ static int	ft_loadinput(t_stack *stack, char **av)
 	return (0);
 }
 
+static int	ft_containsdup(t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < stack->top)
+	{
+		j = 0;
+		while (j < stack->top)
+		{
+			if (j != i && stack->items[i] == stack->items[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	ft_loadstack(t_stack *stack, char **av)
 {
 	int	i;
@@ -89,12 +105,16 @@ int	ft_loadstack(t_stack *stack, char **av)
 		return (1);
 	if (ft_loadinput(stack, av))
 		return (1);
+	if (ft_containsdup(stack))
+	{
+		ft_freestack(stack);
+		return (1);
+	}
 	while (i < stack->top)
 	{
 		if (stack->items[i] > INT_MAX || stack->items[i] < INT_MIN)
 		{
-			free(stack->items);
-			free(stack);
+			ft_freestack(stack);
 			return (1);
 		}
 		i++;

@@ -6,13 +6,13 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/19 20:47:22 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 12:10:12 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_puterror(void)
+static void	ft_puterror(void)
 {
 	ft_putendl_fd("Error", 2);
 	exit(1);

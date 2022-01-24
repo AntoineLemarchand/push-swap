@@ -14,7 +14,7 @@ endef
 
 define finishing
 	@printf '%s\n' "-> Finishing $1"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME) $(LIBS)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $2 -o $1 $(LIBS)
 	@echo "√"
 endef
 
@@ -41,7 +41,23 @@ SRCS		= $(addprefix srcs/, \
 			  	main.c \
 				)
 
+BONUS		= $(addprefix srcs/, \
+			  	parsing.c \
+			  	stack.c \
+				stackop.c \
+				sortsmall.c \
+				costsort.c \
+				utils.c \
+				sort.c \
+			 	get_next_line_utils.c \
+				get_next_line.c \
+				checker_utils.c \
+			  	checker.c \
+			  )
+
 OBJS		= $(SRCS:.c=.o)
+
+BONUS_OBJS	= $(BONUS:.c=.o)
 
 NAME		= push_swap
 
@@ -60,15 +76,22 @@ LIBS		= ./libft/libft.a
 
 ${NAME}:	$(OBJS)
 			$(call building,libft)
-			$(call finishing,$(NAME))
+			$(call finishing,$(NAME), $(OBJS))
+
+checker:	$(NAME) $(BONUS_OBJS)
+			$(call finishing,checker,$(BONUS_OBJS))
 
 all:		$(NAME)
 
+bonus:		checker
+
 clean:	
 			$(call removing,$(OBJS))
+			$(call removing,$(BONUS_OBJS))
 
 fclean:		clean
 			$(call cleaning,libft,fclean)
 			$(call removing,${NAME})
+			$(call removing,checker)
 
 re:			fclean all

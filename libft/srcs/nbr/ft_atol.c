@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 12:50:40 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/04 16:06:33 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:14:27 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ long	ft_atol(const char *nptr)
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		result = result * 10 + nptr[i++] - 48;
-	return (result * sign);
+	if (result >= 0)
+		return (result * sign);
+	else
+		return (2147483647);
 }
