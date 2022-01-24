@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:45:12 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/24 14:58:54 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:05:51 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_execrotate(t_stack *a, t_stack *b, char *action)
 	}
 	else if (!ft_strncmp(action, "rr\n", 3) || !ft_strncmp(action, "rrr\n", 4))
 	{
-		if (!a->top || !b->top 
+		if (!a->top || !b->top
 			|| ft_rotate(a, action[2] == 'r') || ft_rotate(b, action[2] == 'r'))
 			return (1);
 	}

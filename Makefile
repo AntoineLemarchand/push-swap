@@ -34,6 +34,7 @@ SRCS		= $(addprefix srcs/, \
 			  	parsing.c \
 			  	stack.c \
 				stackop.c \
+				sortsmallest.c \
 				sortsmall.c \
 				costsort.c \
 				utils.c \
@@ -45,9 +46,10 @@ BONUS		= $(addprefix srcs/, \
 			  	parsing.c \
 			  	stack.c \
 				stackop.c \
+				utils.c \
+				sortsmallest.c \
 				sortsmall.c \
 				costsort.c \
-				utils.c \
 				sort.c \
 			 	get_next_line_utils.c \
 				get_next_line.c \

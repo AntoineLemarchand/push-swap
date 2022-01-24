@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:28:28 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 16:32:10 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:07:29 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int		ft_loadstack(t_stack *stack, char **av);
 // sort.c
 int		ft_issorted(t_stack *a);
 int		ft_sortstack(t_stack *a, t_stack *b);
-// sortsmall.c
+// sortsmallest.c
 int		ft_sort2(t_stack *a);
 int		ft_sort3(t_stack *a);
+// sortsmall.c
 int		ft_selectionsort(t_stack *a, t_stack *b, int ismall);
 // costsort.c
 int		ft_costsort(t_stack *a, t_stack *b);

@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:51 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/24 14:08:46 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:05:40 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_checkinput(char **av)
 		{
 			if (av[i][j] != '-' && av[i][j] != ' ' && !ft_isdigit(av[i][j]))
 				return (1);
-			else if (av[i][j] == '-' 
+			else if (av[i][j] == '-'
 				&& (av[i][j + 1] == ' ' || av[i][j + 1] == '-'))
 				return (1);
 			else if (ft_isdigit(av[i][j]) && av[i][j + 1] == '-')
