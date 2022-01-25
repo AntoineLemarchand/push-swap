@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:51 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/24 15:05:40 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/25 09:42:02 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ static int	ft_loadinput(t_stack *stack, char **av)
 			while (split[i])
 			{
 				ft_pushbot(stack, ft_atol(split[i]));
-				free(split[i]);
 				i++;
 			}
-			free(split);
+			ft_freesplit(split);
 		}
 		else if (**av != '\0')
 			ft_pushbot(stack, ft_atol(*av));
@@ -101,22 +100,14 @@ int	ft_loadstack(t_stack *stack, char **av)
 	int	i;
 
 	i = 0;
-	if (ft_checkinput(av))
-		return (1);
-	if (ft_loadinput(stack, av))
+	if (ft_checkinput(av) || ft_loadinput(stack, av))
 		return (1);
 	if (ft_containsdup(stack))
-	{
-		ft_freestack(stack);
 		return (1);
-	}
 	while (i < stack->top)
 	{
 		if (stack->items[i] > INT_MAX || stack->items[i] < INT_MIN)
-		{
-			ft_freestack(stack);
 			return (1);
-		}
 		i++;
 	}
 	return (0);

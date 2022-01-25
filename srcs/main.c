@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 10:14:52 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/24 12:10:12 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/25 09:38:38 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ int	main(int ac, char **av)
 		ft_puterror();
 	}
 	else if (ft_loadstack(a, av + 1))
+	{
+		ft_freestack(a);
+		ft_freestack(b);
 		ft_puterror();
+	}
 	else
 		ft_sortstack(a, b);
 	ft_freestack(a);

@@ -6,7 +6,7 @@
 /*   By: alemarch <alemarch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 09:52:14 by alemarch          #+#    #+#             */
-/*   Updated: 2022/01/20 16:31:57 by alemarch         ###   ########.fr       */
+/*   Updated: 2022/01/25 09:43:09 by alemarch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_issorted(t_stack *a)
 	int		i;
 	long	prev;
 
+	if (!a->top)
+		return (1);
 	prev = *a->items;
 	i = 1;
 	while (i < a->top)

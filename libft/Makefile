@@ -30,6 +30,7 @@ STR			= $(addprefix str/, \
 			  	ft_strtrim.c \
 			  	ft_strnstr.c \
 			  	ft_split.c \
+			  	ft_freesplit.c \
 			  	ft_strlen.c \
 			  	ft_strchr.c \
 			  	ft_strrchr.c \
