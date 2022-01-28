@@ -57,3 +57,6 @@ example
 		<td colspan="2">5878</td>
 	</tr>
 </table>
+
+## Grade
+[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/alemarch/push_swap)](https://github.com/JaeSeoKim/badge42)
