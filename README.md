@@ -1,5 +1,7 @@
 # push-swap
 A 42Paris project
+## Grade
+**125/100**
 
 the aim of this project is to order a stack using another stack with a limited
 amount of operations :
@@ -57,6 +59,3 @@ example
 		<td colspan="2">5878</td>
 	</tr>
 </table>
-
-## Grade
-[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/alemarch/push_swap)](https://github.com/JaeSeoKim/badge42)
